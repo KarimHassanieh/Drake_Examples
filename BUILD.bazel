@@ -1,0 +1,19 @@
+
+
+cc_binary(
+    name = "Pendulum",
+    srcs = ["simple_pendulum.cc"],
+    data = ["pendulum.sdf"],
+    deps = [
+        "//systems/analysis",
+        "//systems/framework",
+        "//systems/primitives",
+        "//common",
+        "//multibody/parsing",
+        "//multibody/plant",
+        "//multibody/tree",
+        "//geometry",
+        "@sdformat",
+
+    ],
+)
