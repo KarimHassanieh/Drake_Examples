@@ -7,13 +7,5 @@ Then run the examples from the main workspace by running bazel run.
 
 Simulation of the Simple Pendulum (simple_pendulum.cc to run it type : bazel run MAIN:Pendulum)
 
-[//]: # (Image References)
-[image_0]: ./Theta_vs_time.png
-
-![alt text][image_0] 
-
-
-[//]: # (Image References)
-[image_0]: ./Theta_vs_theta_dot.png
-
-![alt text][image_0] 
+<p align="center"><img src=".Theta_vs_theta_dot.png" /></p>
+<p align="center"><img src=".Theta_vs_time.png" /></p>
