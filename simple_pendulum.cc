@@ -32,6 +32,10 @@ public:
 pendulum_system(){
 DeclareContinuousState(1,1,0);
 DeclareInputPort ("control_tau",kVectorValued,1);
+DeclareInputPort ("damping_factor",kVectorValued,1);
+DeclareInputPort ("length",kVectorValued,1);
+DeclareInputPort ("mass",kVectorValued,1);
+DeclareInputPort ("gravity",kVectorValued,1);
 DeclareVectorOutputPort("pendulum_state",BasicVector<double>(2),&pendulum_system::Output_state);//STATE ={Theta,Tehta_dot}
 }
 private :
@@ -45,10 +49,10 @@ double theta_dot=context.get_continuous_state()[1];
 
 double tau=GetInputPort("control_tau").Eval(context)[0];
 (*derivatives)[0]=theta_dot;
-double b=2;
-double m=3;
-double l=1;
-double g=10;
+double b=GetInputPort("damping_factor").Eval(context)[0];
+double m=GetInputPort("mass").Eval(context)[0];
+double l=GetInputPort("length").Eval(context)[0];
+double g=GetInputPort("gravity").Eval(context)[0];
 double theta_double_dot=(tau-b*theta_dot)/(m*l*l)-(g/l)*sin(theta);
 
 (*derivatives)[1]=theta_double_dot;
@@ -73,11 +77,37 @@ int main ()
   // τ: input torque, in N⋅m.
   // g: acceleration of gravity, in m/s²
   //Get  the output
+double control_input;
+double damping;
+double mass;
+double length;
+double gravity;
+cout<<"Insert Control Input Required : ";
+cin>>control_input;
+cout<<"Insert Damping Factor Required : ";
+cin>>damping;
+cout<<"Insert Mass  Required : ";
+cin>>mass;
+cout<<"Insert Length  Required : ";
+cin>>length;
+cout<<"Insert Gravity Required : ";
+cin>>gravity;
+
+
+
+
 
   DiagramBuilder<double> builder;
   auto pendulum_result = builder.AddSystem<pendulum_system>();
   builder.ExportInput(pendulum_result->get_input_port(0), "control_tau");
-  auto logger = LogOutput(pendulum_result->GetOutputPort("pendulum_state"), &builder);
+   builder.ExportInput(pendulum_result->get_input_port(1), "damping_factor");
+  builder.ExportInput(pendulum_result->get_input_port(2), "length");
+builder.ExportInput(pendulum_result->get_input_port(3), "mass");
+builder.ExportInput(pendulum_result->get_input_port(4), "gravity");
+ 
+
+
+auto logger = LogOutput(pendulum_result->GetOutputPort("pendulum_state"), &builder);
  logger->set_publish_period(0.25);
   auto system_final_output = builder.Build();
   //Number of seconds to simulate
@@ -92,8 +122,14 @@ int main ()
 //Place input torque
 
 Context<double>& pendulum_context =simulator.get_mutable_context();
-pendulum_context.FixInputPort(0,{10.0});
-  simulator.AdvanceTo(30);
+pendulum_context.FixInputPort(0,{control_input});
+pendulum_context.FixInputPort(1,{damping});
+pendulum_context.FixInputPort(2,{length});
+pendulum_context.FixInputPort(3,{mass});
+pendulum_context.FixInputPort(4,{gravity});
+
+
+simulator.AdvanceTo(30);
   cout<<"Total Time Steps N in  Simulation : " <<logger->sample_times().size()<<endl;
   // Print out the contents of the log.
   // Open file to print results on
