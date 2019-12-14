@@ -82,8 +82,12 @@ double damping;
 double mass;
 double length;
 double gravity;
-cout<<"Insert Control Input Required : ";
+double initial_theta;
+double initial_theta_dot;
+cout<<"____________Pendulum Torque Input_______"<<endl;
+cout<<"Insert Control Input Tau Required : ";
 cin>>control_input;
+cout<<"___________Pendulum Parameters_________"<<endl;
 cout<<"Insert Damping Factor Required : ";
 cin>>damping;
 cout<<"Insert Mass  Required : ";
@@ -92,6 +96,12 @@ cout<<"Insert Length  Required : ";
 cin>>length;
 cout<<"Insert Gravity Required : ";
 cin>>gravity;
+cout<<"_________Initial Conditions________ "<<endl;
+cout<<"Insert Initial Angle  : ";
+cin>>initial_theta;
+cout<<"Insert Initial Angular Velocity  : ";
+cin>>initial_theta_dot;
+cout<<"___________Simulation Results_______"<<endl;
 
 
 
@@ -115,9 +125,9 @@ auto logger = LogOutput(pendulum_result->GetOutputPort("pendulum_state"), &build
   ContinuousState<double>& initial_state =simulator.get_mutable_context().get_mutable_continuous_state();
 
   //Initial condition for theta
-  initial_state[0]=1;
+  initial_state[0]=initial_theta;
   //Initial condition for theta dot
-  initial_state[1]=0;
+  initial_state[1]=initial_theta_dot;
 
 //Place input torque
 
