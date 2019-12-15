@@ -34,3 +34,22 @@ cc_binary(
 
     ],
 )
+cc_binary(
+    name = "Monoped_MultiBody",
+    srcs=["monoped_plant.cc"],
+    data = ["monoped.urdf",
+             ":xpp_hyq",],
+
+    deps = [
+        "//systems/analysis",
+        "//systems/framework",
+        "//systems/primitives",
+        "//common",
+        "//multibody/parsing",
+        "//multibody/plant",
+        "//multibody/tree",
+        "//geometry",
+        "@sdformat",
+
+    ],
+)
