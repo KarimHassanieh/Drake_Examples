@@ -14,7 +14,7 @@
 	    <visual>
 	      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 	      <geometry>
-	        <mesh filename="hipassembly.dae" scale="1 1 1"/>
+	        <mesh filename="package://hyq_description/meshes/leg/hipassembly.dae" scale="1 1 1"/>
 	      </geometry>
 	      <material name="white"/>
 	    </visual>
@@ -23,7 +23,7 @@
 	    <visual>
 	      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 	      <geometry>
-	        <mesh filename="upperleg.dae" scale="1 1 1"/>
+	        <mesh filename="package://hyq_description/meshes/leg/upperleg.dae" scale="1 1 1"/>
 	      </geometry>
 	      <material name="blue"/>
 	    </visual>
@@ -31,7 +31,7 @@
     <link name="lowerleg">
 	    <visual>
 	      <geometry>
-	        <mesh filename="lowerleg.dae" scale="1 1 1"/>
+	        <mesh filename="package://hyq_description/meshes/leg/lowerleg.dae" scale="1 1 1"/>
 	      </geometry>
 	      <material name="blue"/>
 	    </visual>
@@ -41,7 +41,7 @@
         <origin xyz="0.0 0.0 -0.15000" rpy="2.0344439357957036 1.5707962290814481 -1.1071487177940917"/>
         <parent link="base"/>
         <child  link="hipassembly"/>
-
+      
         <axis xyz="0 0 1"/>
     </joint>
     <joint name="hfe_joint" type="revolute">
@@ -55,7 +55,7 @@
         <origin xyz="0.35000 0.00000 0.00000" rpy="0.0 0.0 0.0"/>
         <parent link="upperleg"/>
         <child  link="lowerleg"/>
-        
+
         <axis xyz="0 0 1"/>
     </joint>
 </robot>
