@@ -9,4 +9,4 @@ Simulation of the Simple Pendulum (simple_pendulum.cc to run it type : bazel run
 
 <p align="center"><img src="phase.png" /></p>
 <p align="center"><img src="timesim.png" /></p>
-![](sim.gif)
+<p align="center"><img src="sim.gif" /></p>
