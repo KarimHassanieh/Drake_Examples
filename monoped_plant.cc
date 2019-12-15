@@ -38,11 +38,11 @@ unique_ptr<Context<double>> diagram_context =diagram->CreateDefaultContext();
   diagram->SetDefaultContext(diagram_context.get());
   Context<double>& robot_context =diagram->GetMutableSubsystemContext(robot, diagram_context.get());
   // There is no input actuation in this example for the passive dynamics.
-  //pendulum_context.FixInputPort(pendulum.get_actuation_input_port().get_index(), Vector1d(0));
+//robot_context.FixInputPort(robot.get_actuation_input_port().get_index(), Vector1d(0));
   // Get joints so that we can set initial conditions.
-  //const RevoluteJoint<double>& pendulum_ball = pendulum.GetJointByName<RevoluteJoint>("theta");
+  //const RevoluteJoint<double>& haa_joint = robot.GetJointByName<RevoluteJoint>("haa_joint");
   // Set initial state.
-  //pendulum_ball.set_angle(&pendulum_context, 1.0);
+ //haa_joint.set_angle(&robot_context, 1.0);
   systems::Simulator<double> simulator(*diagram, std::move(diagram_context));
   simulator.set_publish_every_time_step(false);
   simulator.set_target_realtime_rate(1);

@@ -38,7 +38,9 @@ cc_binary(
     name = "Monoped_MultiBody",
     srcs=["monoped_plant.cc"],
     data = ["monoped.urdf",
-             ":xpp_hyq",],
+             "hipassembly.dae",
+             "upperleg.dae",
+             "lowerleg.dae"],
 
     deps = [
         "//systems/analysis",
