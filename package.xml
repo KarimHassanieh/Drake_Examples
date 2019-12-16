@@ -1,27 +1,33 @@
-<package>
-  <name>hyq_description</name>
-  <version>0.1.2</version>
+<?xml version="1.0"?>
+
+<package format="2">
+  <name>xpp_hyq</name>
+  <version>1.0.10</version>
   <description>
-	This package contains the description (mechanical, kinematic, visual,
-  etc.) of the HyQ robot. The files in this package are parsed and used by
-  a variety of other components. Most users will not interact directly
-  with this package.
+    HyQ-robot specific functions for visualization in the  XPP Motion Framework.
+    
+    These include inverse kinematics as well as urdf files for a one-legged,
+    two-legged and four legged robot with <a href="http://dls.iit.it/">HyQ</a>
+    legs.
+        
+    The dynamic model can be found 
+    <a href="https://github.com/iit-DLSLab/hyq-description">here</a>.  
+    
+    See also <a href="https://dls.iit.it">IIT</a>.  
   </description>
-  <maintainer email="marco.camurri@iit.it">Marco Camurri</maintainer>
-
-  <license>Apache License 2.0</license>
-
-  <author>Carlos Mastalli</author>
-  <author>Ioannis Havoutis</author>
-
+  
+  <author>Alexander W. Winkler</author>
+  <author email="depardo@ethz.ch">Diego Pardo.</author>
+  <author email="carlos.mastalli@iit.it">Carlos Mastalli</author>
+  <author email="ioannis@robots.ox.ac.uk">Ioannis Havoutis</author>
+  <maintainer email="alexander.w.winkler@gmail.com">Alexander W. Winkler</maintainer>
+  <license>BSD</license>
+  
+  <url type="website">http://github.com/leggedrobotics/xpp</url>
+  <url type="bugtracker">http://github.com/leggedrobotics/xpp/issues</url>
+  
   <buildtool_depend>catkin</buildtool_depend>
-
-  <build_depend>convex_decomposition</build_depend>
-  <build_depend>ivcon</build_depend>
-
-  <run_depend>xacro</run_depend>
-  <run_depend>sensors_description</run_depend>
-
-  <test_depend>gtest</test_depend>
-  <test_depend>urdfdom</test_depend>
+  <depend>xacro</depend>
+  <depend>roscpp</depend>
+  <depend>xpp_vis</depend>
 </package>

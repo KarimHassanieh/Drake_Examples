@@ -19,13 +19,13 @@ using namespace geometry;
 
 int main ()
 {
-  cout<<"___________Simple Pendulum Simulation___________"<<endl;
+  cout<<"___________Robot Simulation___________"<<endl;
    //1- Initialize Builder
    DiagramBuilder <double> builder;
    SceneGraph<double>& my_scene = *builder.AddSystem<SceneGraph>();
    my_scene.set_name("my_scene");
    //2- Initialize and load URDF model to multibody_plant
-   string model_path=FindResourceOrThrow("drake/MAIN/models/monoped.urdf");
+   string model_path=FindResourceOrThrow("drake/MAIN/models/valkyrie/urdf/urdf/valkyrie_A_sim_drake_one_neck_dof_wide_ankle_rom.urdf");
    MultibodyPlant<double>& robot=*builder.AddSystem<MultibodyPlant>();
    Parser(&robot,&my_scene).AddModelFromFile(model_path);
    robot.Finalize();

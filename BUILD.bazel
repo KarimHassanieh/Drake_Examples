@@ -1,5 +1,6 @@
 
 package(default_visibility = ["//visibility:public"])
+
 cc_binary(
     name = "Simple_Pendulum",
     srcs = ["simple_pendulum_plant.cc"],
@@ -38,7 +39,6 @@ cc_binary(
     name = "Monoped_MultiBody",
     srcs=["monoped_plant.cc"],
     data = [":models",
-            ":models/package.xml",
              "//tools:drake_visualizer",
     ],
 
@@ -51,6 +51,7 @@ cc_binary(
         "//multibody/plant",
         "//multibody/tree",
         "//geometry",
+        "//lcm",
         "@sdformat",
 
     ],
