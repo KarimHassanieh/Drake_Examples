@@ -40,7 +40,7 @@ cc_binary(
     srcs=["monoped_plant.cc"],
     data = [":models",
              "//tools:drake_visualizer",
-             
+
     ],
 
     deps = [
@@ -53,7 +53,5 @@ cc_binary(
         "//multibody/tree",
         "//geometry",
         "//lcm",
-        "@sdformat",
-
     ],
 )

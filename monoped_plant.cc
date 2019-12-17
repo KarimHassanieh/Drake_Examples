@@ -10,6 +10,7 @@
 #include "drake/multibody/tree/revolute_joint.h"
 #include "drake/systems/analysis/simulator.h"
 #include "drake/systems/framework/diagram_builder.h"
+#include "drake/lcm/drake_lcm.h"
 
 using namespace std;
 using namespace drake;
@@ -22,10 +23,11 @@ int main ()
   cout<<"___________Monoped Robot Simulation___________"<<endl;
    //1- Initialize Builder
    DiagramBuilder <double> builder;
+
    SceneGraph<double>& my_scene = *builder.AddSystem<SceneGraph>();
    my_scene.set_name("my_scene");
    //2- Initialize and load URDF model to multibody_plant
-   string model_path=FindResourceOrThrow("drake/MAIN/models/xpp/robots/xpp_hyq/urdf/biped.urdf");
+   string model_path=FindResourceOrThrow("drake/MAIN/models/xpp/robots/xpp_hyq/urdf/monoped.urdf");
    MultibodyPlant<double>& robot=*builder.AddSystem<MultibodyPlant>();
    Parser(&robot,&my_scene).AddModelFromFile(model_path);
    robot.Finalize();
