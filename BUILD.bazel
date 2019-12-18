@@ -38,9 +38,11 @@ cc_binary(
 cc_binary(
     name = "Monoped_MultiBody",
     srcs=["monoped_plant.cc"],
-    data = [":models",
-             "//tools:drake_visualizer",
-
+    data = [ "//tools:drake_visualizer",
+             "monoped.urdf",
+              "lowerleg.obj",
+               "hipassembly.obj",
+               "upperleg.obj"
     ],
 
     deps = [
