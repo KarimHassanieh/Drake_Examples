@@ -1,4 +1,4 @@
-# An Introdution To Drake Library
+# Simple Pendulum
 
 ## Getting Super Powers
 
@@ -11,6 +11,8 @@ $ give me super-powers
 {% hint style="info" %}
  Super-powers are granted randomly so please submit an issue if you're not happy with yours.
 {% endhint %}
+
+![](../.gitbook/assets/timesim.png)
 
 Once you're strong enough, save the world:
 
