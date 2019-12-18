@@ -1,2 +1,2 @@
-# Contentious and Discrete Functions
+# Continuous and Discrete Functions
 
