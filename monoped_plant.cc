@@ -27,7 +27,7 @@ int main ()
    SceneGraph<double>& my_scene = *builder.AddSystem<SceneGraph>();
    my_scene.set_name("my_scene");
    //2- Initialize and load URDF model to multibody_plant
-   string model_path=FindResourceOrThrow("drake/MAIN/monoped.urdf");
+   string model_path=FindResourceOrThrow("drake/MAIN/models/monoped.urdf");
    MultibodyPlant<double>& robot=*builder.AddSystem<MultibodyPlant>(0.01);
    Parser(&robot,&my_scene).AddModelFromFile(model_path);
    robot.Finalize();
@@ -42,10 +42,10 @@ unique_ptr<Context<double>> diagram_context =diagram->CreateDefaultContext();
   // There is no input actuation in this example for the passive dynamics.
 //robot_context.FixInputPort(robot.get_actuation_input_port().get_index(), Vector1d(0));
   // Get joints so that we can set initial conditions.
-  //const RevoluteJoint<double>& haa_joint = robot.GetJointByName<RevoluteJoint>("haa_joint");
+//  const RevoluteJoint<double>& haa_joint = robot.GetJointByName<RevoluteJoint>("haa_joint");
   // Set initial state.
- //haa_joint.set_angle(&robot_context, 1.0);
-  systems::Simulator<double> simulator(*diagram, std::move(diagram_context));
+// haa_joint.set_angle(&robot_context, 1.0);
+systems::Simulator<double> simulator(*diagram, move(diagram_context));
   simulator.set_publish_every_time_step(false);
   simulator.set_target_realtime_rate(1);
   simulator.Initialize();
