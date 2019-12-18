@@ -15,7 +15,7 @@
 	    <visual>
 	      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 	      <geometry>
-	        <mesh filename="package://models/hipassembly.obj" scale="1 1 1"/>
+	        <mesh filename="/home/karim/Desktop/KARIM/ROBOTICS/drake_karim/MAIN/models/hipassembly.obj" scale="1 1 1"/>
 	      </geometry>
 	      <material name="white"/>
 	    </visual>
@@ -24,7 +24,7 @@
 	    <visual>
 	      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
 	      <geometry>
-	        <mesh filename="package://models/upperleg.obj" scale="1 1 1"/>
+	        <mesh filename="/home/karim/Desktop/KARIM/ROBOTICS/drake_karim/MAIN/models/upperleg.obj" scale="1 1 1"/>
 	      </geometry>
 	      <material name="blue"/>
 	    </visual>
@@ -32,7 +32,7 @@
     <link name="L_lowerleg">
 	    <visual>
 	      <geometry>
-	        <mesh filename="package://models/lowerleg.obj" scale="1 1 1"/>
+	        <mesh filename="/home/karim/Desktop/KARIM/ROBOTICS/drake_karim/MAIN/models/lowerleg.obj" scale="1 1 1"/>
 	      </geometry>
 	      <material name="blue"/>
 	    </visual>
@@ -67,7 +67,7 @@
       <visual>
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://xpp_hyq/meshes/leg/hipassembly.dae" scale="1 1 1"/>
+          <mesh filename="/home/karim/Desktop/KARIM/ROBOTICS/drake_karim/MAIN/models/hipassembly.obj" scale="1 1 1"/>
         </geometry>
         <material name="white"/>
       </visual>
@@ -76,7 +76,7 @@
       <visual>
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
         <geometry>
-          <mesh filename="package://xpp_hyq/meshes/leg/upperleg.dae" scale="1 1 1"/>
+          <mesh filename="/home/karim/Desktop/KARIM/ROBOTICS/drake_karim/MAIN/models/upperleg.obj" scale="1 1 1"/>
         </geometry>
         <material name="blue"/>
       </visual>
@@ -84,7 +84,7 @@
     <link name="R_lowerleg">
       <visual>
         <geometry>
-          <mesh filename="package://xpp_hyq/meshes/leg/lowerleg.dae" scale="1 1 1"/>
+          <mesh filename="/home/karim/Desktop/KARIM/ROBOTICS/drake_karim/MAIN/models/lowerleg.obj" scale="1 1 1"/>
         </geometry>
         <material name="blue"/>
       </visual>

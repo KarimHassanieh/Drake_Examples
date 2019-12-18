@@ -27,7 +27,7 @@ int main ()
    SceneGraph<double>& my_scene = *builder.AddSystem<SceneGraph>();
    my_scene.set_name("my_scene");
    //2- Initialize and load URDF model to multibody_plant
-   string model_path=FindResourceOrThrow("drake/MAIN/models/monoped.urdf");
+   string model_path=FindResourceOrThrow("drake/MAIN/models/biped.urdf");
    MultibodyPlant<double>& robot=*builder.AddSystem<MultibodyPlant>(0.01);
    Parser(&robot,&my_scene).AddModelFromFile(model_path);
    robot.Finalize();

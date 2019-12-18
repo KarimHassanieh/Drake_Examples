@@ -3418,8 +3418,7 @@ vn -6.81196e-07 1 4.65661e-07
 vn -6.81196e-07 1 4.65661e-07
 
 # Mesh 'node_008' with 568 faces
-g node_008
-usemtl Material_001-material
+
 f  1//1 2//2 3//3
 f  4//4 5//5 6//6
 f  7//7 8//8 9//9

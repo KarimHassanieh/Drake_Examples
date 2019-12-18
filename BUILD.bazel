@@ -1,6 +1,6 @@
 
-package(default_visibility = ["//visibility:public"])
 
+load("//tools/install:install_data.bzl", "install_data")
 cc_binary(
     name = "Simple_Pendulum",
     srcs = ["simple_pendulum_plant.cc"],
@@ -21,7 +21,7 @@ cc_binary(
 cc_binary(
     name = "Pendulum_MultiBody",
     srcs=["simple_pendulum_plant.cc"],
-    data = ["pendulum.sdf"],
+    data = ["pendulum.sdf" ],
     deps = [
         "//systems/analysis",
         "//systems/framework",

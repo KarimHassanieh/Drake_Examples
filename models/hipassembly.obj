@@ -1,7 +1,7 @@
 # File produced by Open Asset Import Library (http://www.assimp.sf.net)
 # (assimp v3.0.1262)
 
-mtllib hipassembly.dae.obj.mtl
+
 
 # 1560 vertex positions
 v  0.0601089 0.00648367 -0.03
@@ -3129,9 +3129,8 @@ vn 5.48572e-07 -9.51543e-07 1
 vn 9.54403e-07 -5.27967e-07 1
 vn -3.84051e-07 1.79577e-06 1
 
-# Mesh 'node_007' with 520 faces
-g node_007
-usemtl Material_003-material
+
+
 f  1//1 2//2 3//3
 f  4//4 5//5 6//6
 f  7//7 8//8 9//9
