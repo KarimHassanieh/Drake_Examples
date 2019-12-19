@@ -40,11 +40,12 @@ int main ()
 unique_ptr<Context<double>> diagram_context =diagram->CreateDefaultContext();
   diagram->SetDefaultContext(diagram_context.get());
   Context<double>& robot_context =diagram->GetMutableSubsystemContext(robot, diagram_context.get());
-robot_context.FixInputPort(robot.get_actuation_input_port().get_index(), Vector1d(0));
-  // Get joints so that we can set initial conditions.
- const RevoluteJoint<double>& haa_joint = robot.GetJointByName<RevoluteJoint>("haa_joint");
+robot_context.FixInputPort(robot.get_actuation_input_port().get_index(),{0,0,0});
+//robot_context.FixInputPort(0,{0.0});
 
- 
+  // Get joints so that we can set initial conditions.
+const RevoluteJoint<double>& haa_joint = robot.GetJointByName<RevoluteJoint>("haa_joint");
+
 haa_joint.set_angle(&robot_context, 1.0);
 systems::Simulator<double> simulator(*diagram, move(diagram_context));
   simulator.set_publish_every_time_step(false);

@@ -37,6 +37,8 @@
 	    </visual>
     </link>
 
+
+
     <joint name="haa_joint" type="revolute">
         <origin xyz="0.0 0.0 -0.15000" rpy="2.0344439357957036 1.5707962290814481 -1.1071487177940917"/>
         <parent link="base"/>
@@ -44,6 +46,14 @@
         <limit effort="200" lower="-1.6" upper="1.6" velocity="1.0"/>
         <axis xyz="0 0 1"/>
     </joint>
+
+
+  <transmission name="haa_trans" type="SimpleTransmission">
+    <actuator name="haa_joint_actuator"/>
+    <joint name="haa_joint"/>
+ <mechanicalReduction>1</mechanicalReduction>
+  </transmission>
+
     <joint name="hfe_joint" type="revolute">
         <origin xyz="0.08000 0.00000 0.00000" rpy="1.5707963705062866 -0.0 0.0"/>
         <parent link="hipassembly"/>
@@ -51,6 +61,17 @@
         <limit effort="200" lower="-1.6" upper="1.6" velocity="1.0"/>
         <axis xyz="0 0 1"/>
     </joint>
+
+ <transmission name="hfe_trans" type="SimpleTransmission">
+    <actuator name="hfe_joint_actuator"/>
+    <joint name="hfe_joint"/>
+ <mechanicalReduction>1</mechanicalReduction>
+  </transmission>
+
+
+
+
+
     <joint name="kfe_joint" type="revolute">
         <origin xyz="0.35000 0.00000 0.00000" rpy="0.0 0.0 0.0"/>
         <parent link="upperleg"/>
@@ -58,4 +79,17 @@
         <limit effort="200" lower="-1.6" upper="1.6" velocity="1.0"/>
         <axis xyz="0 0 1"/>
     </joint>
+
+  <transmission name="kfe_trans" type="SimpleTransmission">
+    <actuator name="kfe_joint_actuator"/>
+    <joint name="kfe_joint"/>
+ <mechanicalReduction>1</mechanicalReduction>
+  </transmission>
+
+
+
+
+
+
+
 </robot>
