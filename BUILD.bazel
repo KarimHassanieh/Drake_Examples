@@ -1,6 +1,27 @@
 
 
 load("//tools/install:install_data.bzl", "install_data")
+
+cc_binary(
+    name = "Simple_Function",
+    srcs = ["simple_continious_discrete_time_system.cc"],
+    deps = [
+        "//systems/analysis",
+        "//systems/framework",
+        "//systems/primitives",
+        "//common",
+        "//multibody/parsing",
+        "//multibody/plant",
+        "//multibody/tree",
+        "//geometry",
+
+    ],
+)
+
+
+
+
+
 cc_binary(
     name = "Simple_Pendulum",
     srcs = ["simple_pendulum_plant.cc"],

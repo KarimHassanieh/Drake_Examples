@@ -33,26 +33,25 @@ const double S_n=10*x_n;
 (*final_output)[0]=S_n;
 }
 };
-// State equation xdot=-x+x^3
+// State equation xdot=-x^3+6x^2-5x-12
 class my_continious_system : public LeafSystem<double>{
 public:
 my_continious_system(){
 DeclareContinuousState(1);
-DeclareVectorOutputPort("y",BasicVector<double>(1),&my_continious_system::Output_function);
+DeclareVectorOutputPort("y",BasicVector<double>(2),&my_continious_system::Output_function);
 }
 private :
-// xdot = -x + x³
-void DoCalcTimeDerivatives(
-    const Context<double>& context,
-    ContinuousState<double>* derivatives) const override {
+
+void DoCalcTimeDerivatives(const Context<double>& context,ContinuousState<double>* derivatives) const override {
   const double x = context.get_continuous_state()[0];
-  const double xdot = -x + std::pow(x, 3);
+  const double xdot = -pow(x, 3)+6*pow(x,2)-5*x-12;
   (*derivatives)[0] = xdot;
 }
 
 void Output_function(const Context<double>& context,BasicVector<double>* final_output) const {
-  const double y = context.get_continuous_state()[0];
-  (*final_output)[0] = y;
+  const double x = context.get_continuous_state()[0];
+  (*final_output)[0] = x;
+
 }
 };
 
@@ -70,15 +69,20 @@ auto system_final_output = builder.Build();
 //Number of seconds to simulate
 Simulator<double> simulator(*system_final_output);
 ContinuousState<double>& initial_value =simulator.get_mutable_context().get_mutable_continuous_state();
-initial_value[0]=0.9;
-simulator.AdvanceTo(10);
+double int_value;
+cout<<"==========Producing Continous Function Results ============="<<endl;
+cout<<"Provide Initial Value : ";
+cin>>int_value;
+cout<<endl;
+initial_value[0]=int_value;
+simulator.AdvanceTo(50);
 cout<<"Total Time Steps N in  Simulation : " <<logger->sample_times().size()<<endl;
 // Print out the contents of the log.
 for (int n = 0; n < logger->sample_times().size(); ++n) {
   const double current_time = logger->sample_times()[n];
   cout <<"Current Iteration N : "<< n ;
   cout<<" | Time : "<<current_time;
-  cout<< " | Out Put Y : " << logger->data()(0, n)<<endl;
+  cout<< " | Out Put X_t : " << logger->data()(0, n)<<endl;
 }
 
 return 0;
