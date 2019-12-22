@@ -37,7 +37,7 @@ const double S_n=10*x_n;
 class my_continious_system : public LeafSystem<double>{
 public:
 my_continious_system(){
-DeclareContinuousState(1);
+DeclareContinuousState(1,1,0);
 DeclareVectorOutputPort("y",BasicVector<double>(2),&my_continious_system::Output_function);
 }
 private :
@@ -50,8 +50,9 @@ void DoCalcTimeDerivatives(const Context<double>& context,ContinuousState<double
 
 void Output_function(const Context<double>& context,BasicVector<double>* final_output) const {
   const double x = context.get_continuous_state()[0];
+  const double xdot = context.get_continuous_state()[1];
   (*final_output)[0] = x;
-
+  (*final_output)[1] = xdot;
 }
 };
 
@@ -69,20 +70,25 @@ auto system_final_output = builder.Build();
 //Number of seconds to simulate
 Simulator<double> simulator(*system_final_output);
 ContinuousState<double>& initial_value =simulator.get_mutable_context().get_mutable_continuous_state();
-double int_value;
+double x_int_value;
+double xdot_int_value;
 cout<<"==========Producing Continous Function Results ============="<<endl;
-cout<<"Provide Initial Value : ";
-cin>>int_value;
+cout<<"Provide Initial Value for X : ";
+cin>>x_int_value;
+cout<<"Provide Initial Value for X DOT : ";
+cin>>xdot_int_value;
 cout<<endl;
-initial_value[0]=int_value;
-simulator.AdvanceTo(50);
+initial_value[0]=x_int_value;
+initial_value[1]=xdot_int_value;
+simulator.AdvanceTo(10);
 cout<<"Total Time Steps N in  Simulation : " <<logger->sample_times().size()<<endl;
 // Print out the contents of the log.
 for (int n = 0; n < logger->sample_times().size(); ++n) {
   const double current_time = logger->sample_times()[n];
   cout <<"Current Iteration N : "<< n ;
   cout<<" | Time : "<<current_time;
-  cout<< " | Out Put X_t : " << logger->data()(0, n)<<endl;
+  cout<< " | Out Put X_t : " << logger->data()(0, n);
+  cout<< " | Out Put X_dot : " << logger->data()(1, n)<<endl;
 }
 
 return 0;
